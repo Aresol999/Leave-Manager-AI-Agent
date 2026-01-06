@@ -33,7 +33,6 @@ def apply_leave(employee_id: str, leave_dates: List[str]) -> str:
     if available_balance < requested_days:
         return f"Insufficient leave balance. You requested {requested_days} day(s) but have only {available_balance}."
 
-    # Deduct balance and add to history
     employee_leaves[employee_id]["balance"] -= requested_days
     employee_leaves[employee_id]["history"].extend(leave_dates)
 
