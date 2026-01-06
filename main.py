@@ -1,16 +1,15 @@
 from mcp.server.fastmcp import FastMCP
 from typing import List
 
-# In-memory mock database with 20 leave days to start
 employee_leaves = {
     "E001": {"balance": 18, "history": ["2024-12-25", "2025-01-01"]},
     "E002": {"balance": 20, "history": []}
 }
 
-# Create MCP server
+
 mcp = FastMCP("LeaveManager")
 
-# Tool: Check Leave Balance
+
 @mcp.tool()
 def get_leave_balance(employee_id: str) -> str:
     """Check how many leave days are left for the employee"""
@@ -19,7 +18,7 @@ def get_leave_balance(employee_id: str) -> str:
         return f"{employee_id} has {data['balance']} leave days remaining."
     return "Employee ID not found."
 
-# Tool: Apply for Leave with specific dates
+
 @mcp.tool()
 def apply_leave(employee_id: str, leave_dates: List[str]) -> str:
     """
@@ -41,7 +40,6 @@ def apply_leave(employee_id: str, leave_dates: List[str]) -> str:
     return f"Leave applied for {requested_days} day(s). Remaining balance: {employee_leaves[employee_id]['balance']}."
 
 
-# Resource: Leave history
 @mcp.tool()
 def get_leave_history(employee_id: str) -> str:
     """Get leave history for the employee"""
@@ -51,7 +49,7 @@ def get_leave_history(employee_id: str) -> str:
         return f"Leave history for {employee_id}: {history}"
     return "Employee ID not found."
 
-# Resource: Greeting
+
 @mcp.resource("greeting://{name}")
 def get_greeting(name: str) -> str:
     """Get a personalized greeting"""
