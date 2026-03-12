@@ -25,16 +25,6 @@ The project demonstrates how MCP servers can act as **agentic backends** that ex
 - **FastMCP Server**
 - **Python typing module**
 
----
-
-# Project Structure
-
-
-leave-manager-mcp/
-│
-├── server.py # MCP server implementation
-├── README.md # Project documentation
-
 
 ---
 
